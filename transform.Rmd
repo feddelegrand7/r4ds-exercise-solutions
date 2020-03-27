@@ -574,7 +574,7 @@ We could define a function `time2mins()`, which converts a vector of times in
 from the format used in `flights` to minutes since midnight.
 ```{r}
 time2mins <- function(x) {
-  (x %/% 100 * 60 + x %% 100) %% 1440
+    ifelse(x == 2400, 0, x %/% 100 * 60 + x %% 100)
 }
 ```
 Using `time2mins`, the previous code simplifies to the following.
